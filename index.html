@@ -1,58 +1,112 @@
-{% load markup %}
-<html>
-	<head>
-		<meta>
-		<title>{% block title %}nugarum cesaris{% endblock %}</title>
-		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/main.css">
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	</head>
-	<body>
-		<div id="container">
-			<header>
-				<h1><a href = "/">nugarum cesaris</a></h1>
-				<nav id="menu">
-					<ul>
-						<li id="menu1"><a class="github" href="https://github.com/cesarvargas00">github</a></li>
-						<li id="menu2"><a class="face" href="https://www.facebook.com/cesarvargas00">face</a></li>
-						<li id="menu3"><a class="twitter" href="https://twitter.com/madasheila">twitter</a></li>
-					</ul>
-				</nav>
-			</header>
-			<section id="content">
-				{% block content %}
-					{% for p in ultimos_posts%}
-					<h2>{{p.title}}</h2>
-					<h3>Posted in {{p.data}} #<a href="/post/{{p.id}}/#disqus_thread"> 0 Comments</a></h3>
-					{% if user.is_authenticated %}<a href="/apagar/{{p.id}}">remove</a>{% endif %}
-					<div class="post">
-						<p>
-						{{p.conteudo|markdown:"safe"}}
-						</p>
-						<a href="/post/{{p.id}}" class="more">. . .more</a>
-					</div>
-					{%endfor%}
-					<div class="navigation">&lt&nbsp&nbsp&nbsp&gt</div>
-				{% endblock %}
-			</section>
-			<footer>
-				<a href="#">about</a>
-				<a href="/history">history</a>
-				{% if user.is_authenticated %}<a href="/logout">logout</a>{% else %}<a href="/login">login</a>{% endif %}
-			</footer>
-		</div>
-		{% block scripts %}
-		<script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'cesarblog'; // required: replace example with your forum shortname
+<!DOCTYPE html>
+<html lang="en">
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script'); s.async = true;
-            s.type = 'text/javascript';
-            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
-        </script>
-        {% endblock %}
-	</body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!-- =====BOX ICONS===== -->
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
+
+    <title>Imad</title>
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="#" class="nav__logo">Imad</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">About</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="bx bx-menu"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== HOME =====-->
+        <section class="home bd-grid" id="home">
+            <div class="home__data">
+                <h1 class="home__title">
+                    Hi,<br />I am <span class="home__title-color">Imad</span><br />
+                    Video Editor
+                </h1>
+
+                <a href="https://www.instagram.com/imad._.fx/" class="button">Contact</a>
+            </div>
+
+            <div class="home__social">
+                <a href="" class="home__social-icon"><i class="bx bxl-twitter"></i></a>
+                <a href="https://www.instagram.com/imad._.fx/" class="home__social-icon"><i class="bx bxl-instagram"></i></a>
+                <a href="https://github.com/imad-sajad" class="home__social-icon"><i class="bx bxl-github"></i></a>
+            </div>
+
+            <div class="home__img">
+                <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <mask id="mask0" mask-type="alpha">
+                        <path
+                            d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
+                    </mask>
+                    <g mask="url(#mask0)">
+                        <path
+                            d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
+                        <image class="home__blob-img" x="50" y="60" href="assets/img/perfil.png" />
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <!--===== ABOUT =====-->
+        <section class="about section" id="about">
+            <h2 class="section-title">About</h2>
+
+            <div class="about__container bd-grid">
+                <div class="about__img">
+                    <img src="assets/img/about.jpg" alt="" />
+                </div>
+
+                <div>
+                    <h2 class="about__subtitle">Bio</h2>
+                    <p class="about__text">Hi, I'm Imad Sajad, a video editor and graphic designer. Currently
+                        studying at the Iqbal Memorial Institute. A young and passionate video editor who loves to watch
+                        anime and play badminton. </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Imad</p>
+        <div class="footer__social">
+            <a href="#" class="footer__icon"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.instagram.com/imad._.fx/" class="footer__icon"><i class="bx bxl-instagram"></i></a>
+            <a href="https://github.com/imad-sajad" class="footer__icon"><i class="bx bxl-github"></i></a>
+        </div>
+        <p class="footer__copy">&#169; All rights reserved</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+</body>
+
 </html>
